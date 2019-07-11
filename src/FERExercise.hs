@@ -13,8 +13,17 @@ module FERExercise
     headHunter,
     firstColumn,
     shoutOutLoud,
+    pad,
+    report,
     
-    pad
+    product',
+    headsOf,
+    modMult,
+    addPredecessor,
+    equalTriplets,
+    replicate',
+    drop',
+    takeFromTo
   )
   where
 
@@ -62,3 +71,42 @@ haveAlignment [] _ = False
 haveAlignment _ [] = False
 haveAlignment (x:xs) (y:ys) = if x == y then True else haveAlignment xs ys
 
+-- Lecture 4
+
+-- Exercise 1
+
+headHunter :: [[a]] -> a
+headHunter [] = error "No heads"
+headHunter (xs:xss)
+  | not (null xs) = head xs
+  | otherwise = headHunter xss
+
+firstColumn :: [[a]] -> [a]
+firstColumn [] = []
+firstColumn (rs:rss)
+  | not (null rs) = (head rs) : firstColumn rss
+  | otherwise     = firstColumn rss
+  
+shoutOutLoud :: String -> String
+shoutOutLoud [] = []
+shoutOutLoud xs = unwords (map (repeatFirstThreeTimes) (words xs))
+
+-- Exercise 2
+
+pad :: String -> String -> (String, String)
+pad xs ys = (capitalize xs, capitalize ys ++ "    ")
+  where capitalize [] = []
+        capitalize (z:zs) = (toUpper z) : zs
+
+-- quartiles :: [Int] -> (Double,Double,Double)
+-- quartiles x = 
+
+-- Exercise 4
+
+report :: (Int, Int) -> String -> String
+report (x, y) (_:z:_)
+  | (x == 1) && (y == 1) = "The pair contains two ones" ++ sen ++ [z]
+  | (x == 1) || (y == 1)  = "The pair contains one" ++ sen ++ [z]
+  | otherwise             = "The pair does not contain a single one" ++ sen ++ [z]
+    where sen =  " and the second element of the list is "
+    

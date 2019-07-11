@@ -72,4 +72,31 @@ spec = do
     it "isn't longer then two characters" $ do
       isOverTwo "12" `shouldBe` False
       
+-- Lecture 4
 
+-- Exercise 1
+
+  describe "headHunter" $ do
+    it "get the first head" $ do
+      headHunter [[], [], [1,2], [3,4]] `shouldBe` 1
+      
+  describe "firstColumn" $ do
+    it "get the first matrix column" $ do
+      firstColumn [[1,2],[3,4]] `shouldBe` [1,3]
+
+  describe "shoutOutLoud" $ do
+    it "repeat the first three letters of each word" $ do
+      shoutOutLoud "Is anybody here?" `shouldBe` "IIIs aaanybody hhhere?"   
+      
+-- Exercise 2
+
+  describe "pad" $ do
+    it "capitalize both and add trailing spaces to the second word" $ do
+      pad "elephant" "cat" `shouldBe` ("Elephant", "Cat    ")
+      
+  -- describe "quartiles" $ do
+    -- it "capitalize both and add trailing spaces to the second word" $ do
+      -- quartiles [3,1,2,4,5,6,8,0,7] `shouldBe` (1.5, 4.0, 6.5)
+      
+
+      
