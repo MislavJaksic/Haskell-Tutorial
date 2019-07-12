@@ -98,5 +98,63 @@ spec = do
     -- it "capitalize both and add trailing spaces to the second word" $ do
       -- quartiles [3,1,2,4,5,6,8,0,7] `shouldBe` (1.5, 4.0, 6.5)
       
+-- Lecture 5
 
+-- Exercise 1
+
+  describe "product'" $ do
+    it "product of the function" $ do
+      product' [1,2,3,4] `shouldBe` 24
+      
+  describe "headsOf" $ do
+    it "get the heads of lists" $ do
+      headsOf [[1,2,3],[4,5],[6]] `shouldBe` [1,4,6]
+      
+-- Exercise 2
+
+  describe "addPredecessor" $ do
+    it "add the previous element to the current element" $ do
+      addPredecessor [3,2,1] `shouldBe` [3,5,3]
+      
+-- Exercise 3
+
+  describe "equalTriplets" $ do
+    it "filter triplets for which x=y=z in (x,y,z)" $ do
+      equalTriplets [(1,2,3),(2,2,2),(4,5,6)] `shouldBe` [(2,2,2)]
+      
+  describe "replicate'" $ do
+    it "non negative replication" $ do
+      replicate' 3 'a' `shouldBe` ['a','a','a']
+      
+-- Exercise 4
+
+  describe "drop'" $ do
+    it "drop a number of list elements" $ do
+      drop' 2 [1,2,3,4,5] `shouldBe` [3,4,5]
+      
+  describe "takeFromTo" $ do
+    it "get elements in range" $ do
+      takeFromTo 1 3 [0,1,2,3,4] `shouldBe` [1,2,3]
+      
+-- Exercise 5
+
+  -- describe "eachThird" $ do
+    -- it "take each third element" $ do
+      -- eachThird "zagreb" `shouldBe` "gb"
+      
+  -- describe "crossZip" $ do
+    -- it "" $ do
+      -- crossZip 1 3 [0,1,2,3,4] `shouldBe` [1,2,3]
+      
+      
+      
+  -- describe "everyN" $ do
+    -- it "take every element" $ do
+      -- everyN 1 "zagreb" `shouldBe` "zagreb"
+      
+    -- it "take every second element" $ do
+      -- everyN 2 "zagreb" `shouldBe` "arb"
+      
+    -- it "take every third element" $ do
+      -- everyN 3 "zagreb" `shouldBe` "gb"
       

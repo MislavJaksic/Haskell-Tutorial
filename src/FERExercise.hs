@@ -23,7 +23,15 @@ module FERExercise
     equalTriplets,
     replicate',
     drop',
-    takeFromTo
+    takeFromTo,
+    -- eachThird
+    
+    length',
+    maxUnzip,
+    
+    
+    Date(Date),
+    showDate
   )
   where
 
@@ -110,3 +118,63 @@ report (x, y) (_:z:_)
   | otherwise             = "The pair does not contain a single one" ++ sen ++ [z]
     where sen =  " and the second element of the list is "
     
+-- Lecture 5
+
+-- Exercise 1
+
+product' :: [Int] -> Int
+product' [] = 0
+product' (x:[]) = x
+product' (x:xs) = x * product' xs
+
+headsOf :: [[a]] -> [a]
+headsOf [] = []
+headsOf (xs:[]) = head xs : []
+headsOf (xs:xss) = head xs : headsOf xss
+
+-- Exercise 2
+
+modMult :: Int -> Int -> [Int] -> [Int]
+modMult n m xs = map (mul) xs
+  where mul x = x * (n `mod` m)
+  
+addPredecessor :: Num a => [a] -> [a]
+addPredecessor xs = addPrev 0 xs
+
+-- Exercise 3
+
+equalTriplets :: [(Int, Int, Int)] -> [(Int, Int, Int)]
+equalTriplets [] = []
+equalTriplets (xs:[])
+  | isTriple xs = xs : []
+  | otherwise   = []
+equalTriplets (xs:xss)
+  | isTriple xs = xs : equalTriplets xss
+  | otherwise   = equalTriplets xss
+
+replicate' :: Int -> a -> [a]
+replicate' n x
+  | n > 0     = x : replicate' (n-1) x
+  | otherwise = []
+  
+-- Exercise 4
+
+drop' :: Int -> [a] -> [a]
+drop' _ [] = []
+drop' n (x:xs)
+  | n > 0     = drop' (n-1) xs
+  | otherwise = x:xs
+
+takeFromTo :: Int -> Int -> [a] -> [a]
+takeFromTo n1 n2 xs
+  | n2 > n1   = take (n2-n1+1) (drop n1 xs)
+  | otherwise = [] 
+
+  
+-- Exercise 5
+
+-- eachThird :: [a] -> [a]
+-- eachThird [] = []
+-- eachThird xs = dropEvery xs ++ eachThird (dropEvery xs)
+--   where dropEvery ys = everyN 3 ys
+

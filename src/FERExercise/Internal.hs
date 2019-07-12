@@ -6,7 +6,9 @@ module FERExercise.Internal
     repeatFirstThreeTimes,
     
     addPrev,
-    isTriple
+    isTriple,
+    -- everyN
+    secondZip
   )
   where
 
@@ -35,3 +37,11 @@ isTriple :: (Int, Int, Int) -> Bool
 isTriple (x,y,z)
   | (x == y) && (x == z) = True
   | otherwise            = False
+  
+-- everyN :: Int -> [a] -> [a]
+-- everyN _ [] = []
+-- everyN n xs
+  -- | n < 1            = []
+  -- | (length xs) >= n = (head (drop (n-1) xs)) : everyN n (drop (n-1) xs)
+  -- | otherwise        = []
+
