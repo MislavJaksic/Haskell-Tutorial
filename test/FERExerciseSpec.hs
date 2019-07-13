@@ -38,9 +38,9 @@ spec = do
       
 -- Exercise 4
 
-  -- describe "inCircle" $ do
-    -- it "only the center is within the circle" $ do
-      -- inCircle 0.1 0 0 `shouldBe` [0.0, 0.0]
+  describe "inCircle" $ do
+    it "only the center is within the circle" $ do
+      inCircle 0.1 0 0 `shouldBe` [(0.0, 0.0)]
       
   describe "steps" $ do
     it "pair even with odd numbered elements but ignore the last unpaied element" $ do
@@ -48,6 +48,9 @@ spec = do
       
     it "pair even with odd numbered elements" $ do
       steps [1,2,3,4] `shouldBe` [(1,2), (3,4)]
+      
+    it "pair even with odd numbered elements" $ do
+      steps [] `shouldBe` ([] :: [(Int, Int)])
       
 -- Exercise 5
 
@@ -93,10 +96,6 @@ spec = do
   describe "pad" $ do
     it "capitalize both and add trailing spaces to the second word" $ do
       pad "elephant" "cat" `shouldBe` ("Elephant", "Cat    ")
-      
-  -- describe "quartiles" $ do
-    -- it "capitalize both and add trailing spaces to the second word" $ do
-      -- quartiles [3,1,2,4,5,6,8,0,7] `shouldBe` (1.5, 4.0, 6.5)
       
 -- Lecture 5
 
@@ -158,3 +157,11 @@ spec = do
     -- it "take every third element" $ do
       -- everyN 3 "zagreb" `shouldBe` "gb"
       
+-- Lecture 6
+
+-- Exercise 1
+
+-- Lecture 7
+
+-- Exercise 1
+

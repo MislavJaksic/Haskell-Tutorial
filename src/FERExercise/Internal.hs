@@ -8,7 +8,11 @@ module FERExercise.Internal
     addPrev,
     isTriple,
     -- everyN
-    secondZip
+    secondZip,
+    
+    Date(Date),
+    Vehicle(Car, Truck, Motorcycle, Bicycle),
+    getHorsepower
   )
   where
 
@@ -44,4 +48,9 @@ isTriple (x,y,z)
   -- | n < 1            = []
   -- | (length xs) >= n = (head (drop (n-1) xs)) : everyN n (drop (n-1) xs)
   -- | otherwise        = []
+
+-- Lecture 7
+
+secondZip :: [a] -> [(a, Int)]
+secondZip x = zip x [0..]
 

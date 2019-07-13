@@ -29,9 +29,8 @@ module FERExercise
     length',
     maxUnzip,
     
-    
-    Date(Date),
-    showDate
+    showDate,
+    totalHorsepower
   )
   where
 
@@ -106,9 +105,6 @@ pad xs ys = (capitalize xs, capitalize ys ++ "    ")
   where capitalize [] = []
         capitalize (z:zs) = (toUpper z) : zs
 
--- quartiles :: [Int] -> (Double,Double,Double)
--- quartiles x = 
-
 -- Exercise 4
 
 report :: (Int, Int) -> String -> String
@@ -177,4 +173,85 @@ takeFromTo n1 n2 xs
 -- eachThird [] = []
 -- eachThird xs = dropEvery xs ++ eachThird (dropEvery xs)
 --   where dropEvery ys = everyN 3 ys
+
+-- Lecture 6
+
+-- Exercise 1
+
+length' :: [a] -> Int
+length' xs = length'' xs 0
+  where length'' [] n = n
+        length'' (_:ys) n = length'' ys n+1
+        
+maxUnzip :: [(Int, Int)] -> (Int, Int)
+maxUnzip [] = error "Empty list"
+maxUnzip ((c,d):ys) = maxUnzip' ys c d
+  where maxUnzip' [] a b = (a, b)
+        maxUnzip' ((x,y):xs) a b
+          | x > a && y > b = maxUnzip' xs x y
+          | x > a          = maxUnzip' xs x b
+          | y > b          = maxUnzip' xs a y
+          | otherwise      = maxUnzip' xs a b
+          
+-- Lecture 7
+
+-- Exercise 1
+
+takeThree = take 3
+
+dropThree = drop 3
+
+hundredTimes = repeat 100
+
+index :: [a] -> [(Int, a)]
+index = zip [0..]
+
+secondIndex :: [a] -> [(a, Int)]
+secondIndex = secondZip
+
+-- Exercise 2
+
+applyOnLast :: (a -> a -> a) -> [a] -> [a] -> a
+applyOnLast f xs ys = f (last xs) (last ys)
+
+lastTwoPlus100 :: [Integer] -> [Integer] -> Integer
+lastTwoPlus100 xs ys = applyOnLast (+) xs ys + 100
+
+applyManyTimes :: Int -> (a -> a) -> a -> a
+applyManyTimes n f x
+  | n > 0     = applyManyTimes (n-1) f (f x)
+  | otherwise = x
+
+applyTwice' :: (a -> a) -> a -> a
+applyTwice' f x = applyManyTimes 2 f x
+
+-- Exercise 3
+
+listifylist :: [a] -> [[a]]
+listifylist = map (\x -> [x])
+
+cutoff :: Int -> [Int] -> [Int]
+cutoff n xs = map (min n) xs
+
+-- Exercise 4
+
+sumEvenSquares :: [Integer] -> Integer
+sumEvenSquares xs = sum (map (\x -> x*x) (filter (\x -> (x `mod` 2) == 0) xs))
+
+freq :: Eq a => a -> [a] -> Int
+freq x xs = length (filter (x==) xs)
+
+-- freqFilter :: Eq a => Int -> [a] -> [a]
+-- freqFilter n xs = filter () xs
+
+-- Exercise 5
+
+withinInterval :: Int -> Int -> [Int] -> [Int]
+withinInterval n m xs = filter (\x -> (m >= x) && (x >= n)) xs
+
+sndColumn :: [[a]] -> [a]
+sndColumn = map (\xs -> head (drop 1 xs))
+  
+-- canonicalizePairs :: Ord a => [(a, a)] -> [(a, a)]
+-- canonicalizePairs =
 
