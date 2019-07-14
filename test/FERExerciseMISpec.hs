@@ -1,12 +1,12 @@
-module FERExerciseSpec
+module FERExerciseMISpec
   ( main
   , spec
   ) where
 
 import Test.Hspec
 
-import FERExercise
-import FERExercise.Internal
+import FERExerciseMI
+import FERExerciseMI.Internal
 
 
 
@@ -137,31 +137,72 @@ spec = do
       
 -- Exercise 5
 
-  -- describe "eachThird" $ do
-    -- it "take each third element" $ do
-      -- eachThird "zagreb" `shouldBe` "gb"
-      
-  -- describe "crossZip" $ do
-    -- it "" $ do
-      -- crossZip 1 3 [0,1,2,3,4] `shouldBe` [1,2,3]
+  describe "eachThird" $ do
+    it "take every third element" $ do
+      eachThird "zagreb" `shouldBe` "gb"
       
       
       
-  -- describe "everyN" $ do
-    -- it "take every element" $ do
-      -- everyN 1 "zagreb" `shouldBe` "zagreb"
+  describe "everyN" $ do
+    it "take every element" $ do
+      everyN 1 "zagreb" `shouldBe` "zagreb"
       
-    -- it "take every second element" $ do
-      -- everyN 2 "zagreb" `shouldBe` "arb"
+    it "take every second element" $ do
+      everyN 2 "zagreb" `shouldBe` "arb"
       
-    -- it "take every third element" $ do
-      -- everyN 3 "zagreb" `shouldBe` "gb"
+    it "take every third element" $ do
+      everyN 3 "zagreb" `shouldBe` "gb"
+      
+    it "there is nothing to take" $ do
+      everyN 3 "" `shouldBe` ([] :: String)
+      
+    it "takes nothing" $ do
+      everyN (-3) "zagreb" `shouldBe` ([] :: String)
       
 -- Lecture 6
 
 -- Exercise 1
 
+  describe "length'" $ do
+    it "count elements" $ do
+      length' "zagreb" `shouldBe` 6
+      
+    it "count nothing" $ do
+      length' [] `shouldBe` 0
+      
+  describe "maxUnzip" $ do
+    it "get both max elements" $ do
+      maxUnzip [(1,4),(2,3),(3,2)] `shouldBe` (3,4)
+      
+    it "there is only one element" $ do
+      maxUnzip [(1,4)] `shouldBe` (1,4)
+
 -- Lecture 7
 
 -- Exercise 1
 
+  describe "index" $ do
+    it "first place indexed elements" $ do
+      index "xyz" `shouldBe` [(0,'x'),(1,'y'),(2,'z')]
+      
+  describe "secondIndex" $ do
+    it "second place indexed elements" $ do
+      secondIndex "xyz" `shouldBe` [('x',0),('y',1),('z',2)]
+
+-- Lecture 8
+
+-- Exercise 1
+
+  describe "sumEven" $ do
+    it "sum even elements" $ do
+      sumEven [1,2,3,4,5,6] `shouldBe` 12
+      
+  describe "filterWords" $ do
+    it "" $ do
+      filterWords ["red", "brown", "a"] "a red fox jumps over a brown fence" `shouldBe` "fox jumps over fence"
+      
+      
+      
+  describe "filterWord" $ do
+    it "filter word from string" $ do
+      filterWord "hello" "hello world" `shouldBe` "world"

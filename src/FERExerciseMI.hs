@@ -1,6 +1,6 @@
 {-# OPTIONS_GHC -Wall #-}
 
-module FERExercise
+module FERExerciseMI
   ( letterCount,
     isPalindrome,
     flipp,
@@ -24,19 +24,37 @@ module FERExercise
     replicate',
     drop',
     takeFromTo,
-    -- eachThird
+    eachThird,
     
     length',
     maxUnzip,
     
-    showDate,
-    totalHorsepower
+    takeThree,
+    dropThree,
+    hundredTimes,
+    index,
+    secondIndex,
+    applyOnLast,
+    lastTwoPlus100,
+    applyManyTimes,
+    applyTwice',
+    listifylist,
+    cutoff,
+    sumEvenSquares,
+    freq,
+    withinInterval,
+    sndColumn,
+    
+    sumEven,
+    filterWords
   )
   where
 
+
+
 import Data.Char
 
-import FERExercise.Internal
+import FERExerciseMI.Internal
 
 
 
@@ -169,10 +187,9 @@ takeFromTo n1 n2 xs
   
 -- Exercise 5
 
--- eachThird :: [a] -> [a]
--- eachThird [] = []
--- eachThird xs = dropEvery xs ++ eachThird (dropEvery xs)
---   where dropEvery ys = everyN 3 ys
+eachThird :: [a] -> [a]
+eachThird [] = []
+eachThird xs = everyN 3 xs
 
 -- Lecture 6
 
@@ -197,17 +214,20 @@ maxUnzip ((c,d):ys) = maxUnzip' ys c d
 
 -- Exercise 1
 
+takeThree :: [a] -> [a]
 takeThree = take 3
 
+dropThree :: [a] -> [a]
 dropThree = drop 3
 
-hundredTimes = repeat 100
+hundredTimes :: a -> [a]
+hundredTimes = replicate 100
 
 index :: [a] -> [(Int, a)]
 index = zip [0..]
 
 secondIndex :: [a] -> [(a, Int)]
-secondIndex = secondZip
+secondIndex = secondIndexZip
 
 -- Exercise 2
 
@@ -241,9 +261,6 @@ sumEvenSquares xs = sum (map (\x -> x*x) (filter (\x -> (x `mod` 2) == 0) xs))
 freq :: Eq a => a -> [a] -> Int
 freq x xs = length (filter (x==) xs)
 
--- freqFilter :: Eq a => Int -> [a] -> [a]
--- freqFilter n xs = filter () xs
-
 -- Exercise 5
 
 withinInterval :: Int -> Int -> [Int] -> [Int]
@@ -251,7 +268,30 @@ withinInterval n m xs = filter (\x -> (m >= x) && (x >= n)) xs
 
 sndColumn :: [[a]] -> [a]
 sndColumn = map (\xs -> head (drop 1 xs))
-  
--- canonicalizePairs :: Ord a => [(a, a)] -> [(a, a)]
--- canonicalizePairs =
 
+-- Lecture 8 -- freepoint/composition ???
+
+-- Exercise 1
+
+sumEven :: [Integer] -> Integer
+sumEven = sum . filter even
+
+filterWords :: [String] -> String -> String
+filterWords [] s = s
+filterWords _ "" = ""
+filterWords (w:ws) s = filterWords ws (filterWord w s)
+
+-- initials3 :: String -> (String -> Bool) -> String -> String
+-- initials3 d p s = 
+-- initials3 "." (/="that") "a company that makes everything" => "A.C.M.E."
+
+-- Exercise 2
+
+-- Exercise 3
+
+-- Exercise 4
+
+-- elem' :: a -> [a] -> Bool
+-- elem' x ys = foldr (==) False ys
+
+-- Exercise 5

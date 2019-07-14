@@ -1,18 +1,16 @@
 {-# OPTIONS_GHC -Wall #-}
 
-module FERExercise.Internal
+module FERExerciseMI.Internal
   ( isOverTwo,
     
     repeatFirstThreeTimes,
     
     addPrev,
     isTriple,
-    -- everyN
-    secondZip,
+    everyN,
+    secondIndexZip,
     
-    Date(Date),
-    Vehicle(Car, Truck, Motorcycle, Bicycle),
-    getHorsepower
+    filterWord
   )
   where
 
@@ -42,15 +40,19 @@ isTriple (x,y,z)
   | (x == y) && (x == z) = True
   | otherwise            = False
   
--- everyN :: Int -> [a] -> [a]
--- everyN _ [] = []
--- everyN n xs
-  -- | n < 1            = []
-  -- | (length xs) >= n = (head (drop (n-1) xs)) : everyN n (drop (n-1) xs)
-  -- | otherwise        = []
+everyN :: Int -> [a] -> [a]
+everyN _ [] = []
+everyN n xs
+  | n < 1            = []
+  | (length xs) >= n = (head (drop (n-1) xs)) : everyN n (drop n xs)
+  | otherwise        = []
 
 -- Lecture 7
 
-secondZip :: [a] -> [(a, Int)]
-secondZip x = zip x [0..]
+secondIndexZip :: [a] -> [(a, Int)]
+secondIndexZip x = zip x [0..]
 
+-- Lecture 8
+
+filterWord :: String -> String -> String
+filterWord w s = unwords $ filter (\x -> not(x==w)) (words s)
