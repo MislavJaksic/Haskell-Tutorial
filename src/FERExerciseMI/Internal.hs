@@ -10,7 +10,8 @@ module FERExerciseMI.Internal
     everyN,
     secondIndexZip,
     
-    filterWord
+    filterWord,
+    delimit
   )
   where
 
@@ -55,4 +56,8 @@ secondIndexZip x = zip x [0..]
 -- Lecture 8
 
 filterWord :: String -> String -> String
-filterWord w s = unwords $ filter (\x -> not(x==w)) (words s)
+filterWord w s = (unwords . filter (\x -> not(x==w))) (words s)
+
+delimit :: Char -> [Char] -> String
+delimit _ [] = []
+delimit d (c:cs) = c : d : (delimit d cs)

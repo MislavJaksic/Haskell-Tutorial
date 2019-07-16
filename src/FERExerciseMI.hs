@@ -46,7 +46,11 @@ module FERExerciseMI
     sndColumn,
     
     sumEven,
-    filterWords
+    filterWords,
+    initials3,
+    maxDiff,
+    isTitleCased,
+    sortPairs
   )
   where
 
@@ -269,7 +273,7 @@ withinInterval n m xs = filter (\x -> (m >= x) && (x >= n)) xs
 sndColumn :: [[a]] -> [a]
 sndColumn = map (\xs -> head (drop 1 xs))
 
--- Lecture 8 -- freepoint/composition ???
+-- Lecture 8
 
 -- Exercise 1
 
@@ -281,13 +285,31 @@ filterWords [] s = s
 filterWords _ "" = ""
 filterWords (w:ws) s = filterWords ws (filterWord w s)
 
--- initials3 :: String -> (String -> Bool) -> String -> String
--- initials3 d p s = 
--- initials3 "." (/="that") "a company that makes everything" => "A.C.M.E."
+initials3 :: Char -> (String -> Bool) -> String -> String
+initials3 d p s = (delimit d . map (toUpper . head) . filter p) (words s)
 
 -- Exercise 2
 
+maxDiff :: [Int] -> Int
+maxDiff [] = 0
+maxDiff (_:[]) = 0
+maxDiff (x:y:xs) = max (abs (x - y)) (maxDiff (y:xs))
+
 -- Exercise 3
+
+isTitleCased :: String -> Bool
+isTitleCased = all isUpper . map head . words
+
+sortPairs :: Ord a => [(a, a)] -> [(a, a)]
+sortPairs [] = []
+sortPairs (x:[]) = [x]
+sortPairs (x:y:xs)
+  | (snd x) > (snd y) = y : sortPairs (x:xs)
+  | otherwise = x : sortPairs (y:xs)
+  
+-- filename :: String -> String
+-- filename = 
+-- filename "/etc/init/cron.conf" => "cron.conf"
 
 -- Exercise 4
 

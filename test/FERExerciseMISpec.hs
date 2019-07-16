@@ -201,8 +201,35 @@ spec = do
     it "" $ do
       filterWords ["red", "brown", "a"] "a red fox jumps over a brown fence" `shouldBe` "fox jumps over fence"
       
+  describe "initials3" $ do
+    it "capitalize letters, delimit and filter words by a predicate" $ do
+      initials3 '.' (/="that") "a company that makes everything" `shouldBe` "A.C.M.E."
+
+-- Exercise 2
+
+  describe "maxDiff" $ do
+    it "sum even elements" $ do
+      maxDiff [1,2,3,5,1] `shouldBe` 4
+      
+-- Exercise 3
+
+  describe "isTitleCased" $ do
+    it "the first letter of every word is capital" $ do
+      isTitleCased "University Of Zagreb" `shouldBe` True
+      
+  describe "sortPairs" $ do
+    it "sort the list of pairs in ascending order with respect to the second element" $ do
+      sortPairs [(0,3), (5,1), (10,2)] `shouldBe` [(5,1), (10,2), (0,3)]
+      
+      
+      
       
       
   describe "filterWord" $ do
     it "filter word from string" $ do
       filterWord "hello" "hello world" `shouldBe` "world"
+      
+  describe "delimit" $ do
+    it "delimit characters with a delimiter" $ do
+      delimit '.' "ACME" `shouldBe` "A.C.M.E."
+      
