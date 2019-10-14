@@ -1,9 +1,9 @@
-## Haskell Project Template
+## Haskell Tutorial
 
 Install [Haskell Stack](https://docs.haskellstack.org/en/stable/README/).  
 ```
-$: stack new Haskell-Project-Template
-$: cd Haskell-Project-Template
+$: stack new Haskell-Tutorial
+$: cd Haskell-Tutorial
 $: stack setup
 $: stack build
 ```
@@ -17,7 +17,7 @@ $: stack ghci
 For executables.  
 
 ```
-$: stack exec Haskell-Project-Template-exe
+$: stack exec Haskell-Tutorial-exe
 ```
 
 ### src
@@ -29,7 +29,7 @@ For libraries.
 ```
 $: stack test --fast
 
-$: stack test :Haskell-Project-Template-test-fer-course --fast
+$: stack test :Haskell-Tutorial-test-fer-course --fast
 ```
 
 ### package.yaml
