@@ -7,12 +7,8 @@ import Test.Hspec
 
 import FER.Course.Lecture01
 
-
-
 main :: IO ()
 main = hspec spec
-
-
 
 spec :: Spec
 spec = do

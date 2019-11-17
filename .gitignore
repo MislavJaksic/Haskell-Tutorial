@@ -23,4 +23,8 @@ cabal.project.local~
 
 .stack-work/
 Haskell-Tutorial.cabal
-*~
+
+
+
+docs/FER/*
+docs/CIS194/*

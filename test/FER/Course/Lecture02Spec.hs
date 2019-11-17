@@ -7,11 +7,8 @@ import Test.Hspec
 
 import FER.Course.Lecture02
 
-
-
 main :: IO ()
 main = hspec spec
-
 
 sevenIntList :: [Int]
 sevenIntList = [0..6]
