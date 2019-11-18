@@ -27,4 +27,6 @@ Haskell-Tutorial.cabal
 
 
 docs/FER/*
+!docs/FER/README.md
 docs/CIS194/*
+!docs/CIS194/README.md
