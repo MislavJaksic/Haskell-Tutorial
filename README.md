@@ -49,8 +49,6 @@ $: stack ide targets
 
 ### stack.yaml
 
-
-
 ### [hspec](https://hspec.github.io/)
 
-A testing framework which works well with QuickCheck, SmallCheck and HUnit.  
+A testing framework which works well with `QuickCheck`, `SmallCheck` and `HUnit`.  

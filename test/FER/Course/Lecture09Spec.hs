@@ -38,9 +38,9 @@ spec = do
     it "transplate a rectangle" $ do
       translate transPoint simpleRectangle `shouldBe` transRectangle
 
-  describe "inShape" $ do
-    it "point in circle" $ do
-      inShape `shouldBe`
-
-    it "point in rectangle" $ do
-      inShape `shouldBe` 
+  -- describe "inShape" $ do
+  --   it "point in circle" $ do
+  --     inShape `shouldBe`
+  --
+  --   it "point in rectangle" $ do
+  --     inShape `shouldBe`
